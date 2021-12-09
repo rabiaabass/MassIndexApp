@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>siskoApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card color="light">
+    <ion-card-content>
+      Lütfen sizden istenilen boy ve kilo bilgilerinizi giriniz.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+
+  <ion-item>
+    <ion-range (ionChange)="hesapla()" min="50" max="300" color="tertiary" pin="true" [(ngModel)]="boy">
+      <ion-label slot="start">Boy</ion-label>
+      <ion-label slot="end">{{boy}} cm</ion-label>
+    </ion-range>
+  </ion-item> 
+
+  <ion-item>
+    <ion-range  (ionChange)="hesapla()" min="30" max="300" color="tertiary" pin="true" [(ngModel)]="kilo">
+      <ion-label slot="start">Kilo</ion-label>
+      <ion-label slot="end">{{kilo}} kg</ion-label>
+    </ion-range>
+  </ion-item> 
+
+ </ion-list>
+
+ <ion-card color="{{sonuc<18 ? 'tertiary':sonuc<25 ? 'success':sonuc<30 ? 'warning':sonuc<35 ? 'danger':'dark'}}">
+  <ion-card-content>
+    {{sonuc ? sonuc<18 ? 'ZAYIF':sonuc<25 ? 'NORMAL':sonuc<30 ? 'ŞİŞMAN':sonuc<35 ? 'OBEZ':'AŞIRI OBEZ' :'Meraktayım :))'}}
+  </ion-card-content>
+</ion-card>
+
+<div style="text-align: center;">
+  <img style="width: 20%" src="../assets/{{sonuc ? sonuc<18 ? '1':sonuc<25 ? '2':sonuc<30 ? '3':sonuc<35 ? '4':'5' :'1'}}.PNG">
+</div>
+
+</ion-content>
